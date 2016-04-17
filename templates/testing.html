@@ -1,0 +1,65 @@
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">.
+
+{% macro render_field(field) %}
+<div class="form-group">
+
+	{{ field(class="form-control") }}
+</div>
+{% endmacro %}
+
+
+
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+
+
+		<div class="col-sm-12">
+	
+			<form method="POST"  enctype="multipart/form-data" action="{{ url_for('index') }}">
+  <table class="table table-hover">
+        
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+				{% for item in form.item_list %}
+				  
+				      <tr>
+        <td>{{ item.item_description(style="width:100%" ,placeholder="Descrption") }}</td>
+        <td>{{ item.quantity(style="width:100%" ,placeholder="Qantity")}}</td>
+        <td>{{ item.price(style="width:100%" ,placeholder="Price")}}</td>
+      </tr>
+
+				{% endfor %}
+    </tbody>
+  </table>
+			   
+					{{ render_field(form.add_mobile)}}
+			</form>
+
+
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock %}
+
+
+
+
+      
+  
+</div>
+
+</body>
+</html>
